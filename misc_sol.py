@@ -1,4 +1,38 @@
-import math
+import math, random
+
+def product(num_ls):
+    product = 1
+    for num in num_ls:
+        product *= num
+    return product
+
+def factorial(n):
+    n = int(n)
+    factors = range(1, n + 1)
+    return product(factors)
+
+def dice(sides, num_of_dice):
+    die = range(1, sides + 1)
+    sum = 0
+    for i in range(num_of_dice):
+        sum += random.choice(die)
+    return sum
+
+def remove_all(ls, n):
+    while n in ls:
+        ls.remove(n)
+        print(ls)
+
+def any_in(ls_1, ls_2):
+    lst = ls_1
+    o_lst = ls_2
+    if len(ls_1) > len(ls_2):
+        lst = ls_2
+        o_lst = ls_1
+    for n in lst:
+        if n in o_lst:
+            return True
+    return False
 
 def isFactorish(n):
     if type(n) != int:
@@ -67,3 +101,30 @@ def colorBlender(rgb1, rgb2, midpoints, n):
 
 def getColorNum(rgb, segment):
     return int((rgb / 1000 ** (2 - segment)) % 1000)
+
+def list_reverse(lst):
+    lim = len(lst) // 2
+    if lim != 0:
+        for index in range(0, lim + 1):
+            temp = lst[index]
+            lst[index] = lst[len(lst) - (1 + index)]
+            lst[len(lst) - (1 + index)] = temp
+
+def binary_to_decimal(bin):
+    bin = list(bin)
+    index = range(-1, -(len(bin) + 1), -1)
+    res = 0
+    for n in index:
+        res += int(bin[n]) * (2 ** ((len(bin) - 1) - (-index[n] - 1)))
+    return res
+
+def decimal_to_binary(dec_num):
+    if dec_num == 0:
+        return [dec_num]
+    num_of_digit = math.log(dec_num, 2)
+    digits = [0] * (int(num_of_digit) + 1)
+    while dec_num > 0:
+        num_of_digit = int(math.log(dec_num, 2))
+        digits[len(digits) - int(num_of_digit) - 1] = 1
+        dec_num -= 2 ** int(num_of_digit)
+    return digits
