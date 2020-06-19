@@ -1,17 +1,40 @@
+"""
+Practicing with Lists and Strings, Control Flow, and Module and Libraries
+#4-14
+"""
 import math, random
 
 def product(num_ls):
+    """
+    Determine the product given a list of factors
+    :param num_ls: list of factors
+    :return: product of the factors stored in the list
+    """
     product = 1
     for num in num_ls:
         product *= num
     return product
 
 def factorial(n):
+    """
+    Takes the factorial of a number, such that
+    n! = n * (n - 1) * ... * 3 * 2 * 1
+    or
+    n! = n * (n - 1)!, where 0! = 1
+    :param n:
+    :return: factorial of a number
+    """
     n = int(n)
     factors = range(1, n + 1)
     return product(factors)
 
 def dice(sides, num_of_dice):
+    """
+    Computes the sum of the results of 'num_of_dice' 'sides'-sided die.
+    :param sides: number of sides on a die
+    :param num_of_dice: number of die used
+    :return: the sum of the results of the dice
+    """
     die = range(1, sides + 1)
     sum = 0
     for i in range(num_of_dice):
@@ -19,11 +42,23 @@ def dice(sides, num_of_dice):
     return sum
 
 def remove_all(ls, n):
+    """
+    Remove all instances of 'n' in list 'ls'
+    :param ls: list of numbers
+    :param n: element being removed
+    :return: None
+    """
     while n in ls:
         ls.remove(n)
         print(ls)
 
 def any_in(ls_1, ls_2):
+    """
+    Checks if a list consists of element of another
+    :param ls_1: first list being considered
+    :param ls_2: second list being considered
+    :return: True or False depending on whether the condition is true
+    """
     lst = ls_1
     o_lst = ls_2
     if len(ls_1) > len(ls_2):
@@ -34,6 +69,7 @@ def any_in(ls_1, ls_2):
             return True
     return False
 
+# Is Factorish
 def isFactorish(n):
     if type(n) != int:
         return False
@@ -48,7 +84,7 @@ def isFactorish(n):
         return n % n_1 == 0 and n % n_10 == 0 and n % n_100 == 0
     return False
 
-#2
+# Areas between three lines
 def threeLinesArea(m1, b1, m2, b2, m3, b3):
     x1 = determine_intersection(m1, b1, m2, b2)
     x2 = determine_intersection(m2, b2, m3, b3)
@@ -71,8 +107,7 @@ def herons(a, b, c):
     s = (a + b + c) / 2
     return math.sqrt(s * (s - a) * (s - b) * (s - c))
 
-#3
-
+# Color Blender
 def roundUp(n):
     if type(n) == float or type(n) == int:
         decimals = n - int(n)
@@ -103,6 +138,11 @@ def getColorNum(rgb, segment):
     return int((rgb / 1000 ** (2 - segment)) % 1000)
 
 def list_reverse(lst):
+    """
+    Reverses the list without changing the original list
+    :param lst: original list
+    :return:None
+    """
     lim = len(lst) // 2
     if lim != 0:
         for index in range(0, lim + 1):
@@ -111,6 +151,11 @@ def list_reverse(lst):
             lst[len(lst) - (1 + index)] = temp
 
 def binary_to_decimal(bin):
+    """
+    Converts a binary number to a decimal number
+    :param bin: given binary number
+    :return: the decimal number
+    """
     bin = list(bin)
     index = range(-1, -(len(bin) + 1), -1)
     res = 0
@@ -119,6 +164,11 @@ def binary_to_decimal(bin):
     return res
 
 def decimal_to_binary(dec_num):
+    """
+    Converts a decimal number to a binary number
+    :param bin: given decimal number
+    :return: the binary number
+    """
     if dec_num == 0:
         return [dec_num]
     num_of_digit = math.log(dec_num, 2)
